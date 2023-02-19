@@ -12,14 +12,14 @@ const cors = require("cors");
 router.use(cors());
 //
 
-router.get("/personnages", async (req, res) => {
+router.get("/comics", async (req, res) => {
   try {
     // console.log(req.query);
-    const numberToSkip = (req.query.page - 1) * 20;
+    const numberToSkip = (req.query.page - 1) * 18;
     const name = req.query.name;
     // console.log(name);
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/characters?apiKey=${process.env.API_KEY}&skip=${numberToSkip}&name=${name}&limit=20`
+      `https://lereacteur-marvel-api.herokuapp.com/comics?apiKey=${process.env.API_KEY}&skip=${numberToSkip}&title=${name}&limit=18`
     );
 
     res.json(response.data);
